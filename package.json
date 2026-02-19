@@ -1,0 +1,21 @@
+{
+  "name": "playwright-course",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.58.1",
+    "@types/node": "^25.2.1"
+  },
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:debug": "playwright test --debug",
+    "test:headed": "playwright test --headed",
+    "report": "playwright show-report",
+    "clean": "rm -rf .auth/ test-results/ playwright-report/",
+    "clean:browsers": "playwright uninstall && playwright install",
+    "clean:all": "yarn clean && yarn clean:browsers",
+    "test:fresh": "yarn clean && yarn test"
+  }
+}
