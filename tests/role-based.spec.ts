@@ -6,13 +6,16 @@ test.describe('Role-Based Access Control Tests', () => {
         test.use({ userRole: 'STANDARD_USER' });
 
         test('Standard user sees limited dashboard features', async ({
-            authenticatedPage: page,  // 🔧 FIX: Siempre incluir authenticatedPage
+            authenticatedPage: page, 
             dashboardPage,
         }) => {
             // Debug info
             console.log('Current URL:', page.url());
             
             await dashboardPage.goto();
+            
+            // For visual checks
+            await expect(page).toHaveScreenshot('standard-user-dashboard.png', { fullPage: true });
 
             await expect(dashboardPage.productsTitle).toBeVisible({ timeout: 10000 });
             await expect(dashboardPage.inventoryItems).toHaveCount(6);
